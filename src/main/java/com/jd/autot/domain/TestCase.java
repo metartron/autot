@@ -2,7 +2,7 @@ package com.jd.autot.domain;
 
 import java.util.Date;
 
-public class ConfigForm {
+public class TestCase {
 
     private Integer id;
 

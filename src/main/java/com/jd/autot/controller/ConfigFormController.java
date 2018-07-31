@@ -1,15 +1,16 @@
 package com.jd.autot.controller;
 
 import com.jd.autot.common.Result;
-import com.jd.autot.domain.ConfigForm;
+import com.jd.autot.domain.TestCase;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 @Controller
 public class ConfigFormController {
 
+
     @PostMapping("/configForm")
-    public Result addConfigForm(ConfigForm configForm) {
+    public Result addConfigForm(TestCase testCase) {
 
         return null;
     }
@@ -21,7 +22,7 @@ public class ConfigFormController {
     }
 
     @PutMapping("/configForm")
-    public Result updateConfigForm(ConfigForm configForm) {
+    public Result updateConfigForm(TestCase testCase) {
 
         return null;
     }
