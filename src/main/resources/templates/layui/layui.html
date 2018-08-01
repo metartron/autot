@@ -5,143 +5,225 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <title>AutoTNT</title>
     <link rel="stylesheet" href="/static/layui/css/layui.css">
+    <link rel="stylesheet" href="/static/layui/css/admin.css">
+    <link rel="stylesheet" href="/static/layui/css/modules/layer/default/layer.css">
+    <style id="LAY_layadmin_theme">.layui-side-menu, .layadmin-pagetabs .layui-tab-title li:after, .layadmin-pagetabs .layui-tab-title li.layui-this:after, .layui-layer-admin .layui-layer-title, .layadmin-side-shrink .layui-side-menu .layui-nav > .layui-nav-item > .layui-nav-child {
+        background-color: #3A3D49 !important;
+    }
+
+    .layui-nav-tree .layui-this, .layui-nav-tree .layui-this > a, .layui-nav-tree .layui-nav-child dd.layui-this, .layui-nav-tree .layui-nav-child dd.layui-this a {
+        background-color: #5FB878 !important;
+    }
+
+    .layui-layout-admin .layui-logo {
+        background-color: #2F9688 !important;
+    }</style>
+
 </head>
-<body class="layui-layout-body">
-<div class="layui-layout layui-layout-admin">
-    <div class="layui-header">
-        <div class="layui-logo">AutoTNT</div>
-        <!-- 头部区域（可配合layui已有的水平导航） -->
-        <ul class="layui-nav layui-layout-left">
-            <li class="layui-nav-item"><a href="">控制台</a></li>
-            <li class="layui-nav-item"><a href="">商品管理</a></li>
-            <li class="layui-nav-item"><a href="">用户</a></li>
-            <li class="layui-nav-item">
-                <a href="javascript:;">其它系统</a>
-                <dl class="layui-nav-child">
-                    <dd><a href="">邮件管理</a></dd>
-                    <dd><a href="">消息管理</a></dd>
-                    <dd><a href="">授权管理</a></dd>
-                </dl>
-            </li>
-        </ul>
-        <ul class="layui-nav layui-layout-right">
-            <li class="layui-nav-item">
-                <a href="javascript:;">
-                    <img src="http://t.cn/RCzsdCq" class="layui-nav-img">
-                    admin
-                </a>
-                <dl class="layui-nav-child">
-                    <dd><a href="">基本资料</a></dd>
-                    <dd><a href="">安全设置</a></dd>
-                </dl>
-            </li>
-            <li class="layui-nav-item"><a href="">退了</a></li>
-        </ul>
-    </div>
+<body layadmin-themealias="green" class="layui-layout-body">
+<div id="LAY_app" class="layadmin-tabspage-none">
+    <div class="layui-layout layui-layout-admin">
+        <div class="layui-header">
+            <div class="layui-logo" lay-href=""> <span>AutoTNT</span> </div>
+            <!-- 头部区域 -->
+            <ul class="layui-nav layui-layout-left">
+                <li class="layui-nav-item layadmin-flexible" lay-unselect="">
+                    <a href="javascript:;" layadmin-event="flexible" title="侧边伸缩">
+                        <i class="layui-icon layui-icon-shrink-right" id="LAY_app_flexible"></i>
+                    </a>
+                </li>
+                <!--<li class="layui-nav-item layui-this layui-hide-xs layui-hide-sm layui-show-md-inline-block">
+                  <a lay-href="" title="">
+                    控制台
+                  </a>
+                </li>-->
+                <!--<li class="layui-nav-item layui-hide-xs" lay-unselect="">-->
+                    <!--<a href="http://www.layui.com/admin/" target="_blank" title="前台">-->
+                        <!--<i class="layui-icon layui-icon-website"></i>-->
+                    <!--</a>-->
+                <!--</li>-->
+                <!--<li class="layui-nav-item" lay-unselect="">-->
+                    <!--<a href="javascript:;" layadmin-event="refresh" title="刷新">-->
+                        <!--<i class="layui-icon layui-icon-refresh-3"></i>-->
+                    <!--</a>-->
+                <!--</li>-->
+                <!--<li class="layui-nav-item layui-hide-xs" lay-unselect="">-->
+                    <!--<input type="text" placeholder="搜索..." autocomplete="off" class="layui-input layui-input-search"-->
+                           <!--layadmin-event="serach" lay-action="template/search/keywords=">-->
+                <!--</li>-->
+                <span class="layui-nav-bar"></span></ul>
+            <ul class="layui-nav layui-layout-right" lay-filter="layadmin-layout-right">
 
-    <div class="layui-side layui-bg-black">
-        <div class="layui-side-scroll">
-            <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
-            <ul class="layui-nav layui-nav-tree"  lay-filter="test">
-                <li class="layui-nav-item layui-nav-itemed">
-                    <a class="" href="javascript:;">时间线</a>
+                <!--<li class="layui-nav-item" lay-unselect="">-->
+                    <!--<a lay-href="app/message/" layadmin-event="message">-->
+                        <!--<i class="layui-icon layui-icon-notice"></i>-->
+
+                        <!--&lt;!&ndash; 如果有新消息，则显示小圆点 &ndash;&gt;-->
+                        <!--<script type="text/html" template="" lay-url="./json/message/new.js">-->
+                            <!--{{# if(d.data.newmsg){ }}-->
+                            <!--<span class="layui-badge-dot"></span>-->
+                            <!--{{# } }}-->
+                        <!--</script>-->
+                        <!--<span class="layui-badge-dot"></span>-->
+
+                    <!--</a>-->
+                <!--</li>-->
+                <li class="layui-nav-item layui-hide-xs" lay-unselect="">
+                    <a href="javascript:;" layadmin-event="theme">
+                        <i class="layui-icon layui-icon-theme"></i>
+                    </a>
+                </li>
+                <!--<li class="layui-nav-item layui-hide-xs" lay-unselect="">-->
+                    <!--<a href="javascript:;" layadmin-event="note">-->
+                        <!--<i class="layui-icon layui-icon-note"></i>-->
+                    <!--</a>-->
+                <!--</li>-->
+                <li class="layui-nav-item layui-hide-xs" lay-unselect="">
+                    <a href="javascript:;" layadmin-event="fullscreen">
+                        <i class="layui-icon layui-icon-screen-full"></i>
+                    </a>
+                </li>
+                <li class="layui-nav-item" lay-unselect="">
+                    <script type="text/html" template="" lay-url="./json/user/session.js"
+                            lay-done="layui.element.render('nav', 'layadmin-layout-right');">
+                        <a href="javascript:;">
+                            <cite>{{ d.data.username }}</cite>
+                        </a>
+                        <dl class="layui-nav-child">
+                            <dd><a lay-href="set/user/info">基本资料</a></dd>
+                            <dd><a lay-href="set/user/password">修改密码</a></dd>
+                            <hr>
+                            <dd layadmin-event="logout" style="text-align: center;"><a>退出</a></dd>
+                        </dl>
+                    </script>
+                    <a href="javascript:;"> <cite>贤心</cite> <span class="layui-nav-more"></span></a>
                     <dl class="layui-nav-child">
-                        <dd><a href="javascript:;">开发日记</a></dd>
+                        <dd><a lay-href="set/user/info">基本资料</a></dd>
+                        <dd><a lay-href="set/user/password">修改密码</a></dd>
+                        <hr>
+                        <dd layadmin-event="logout" style="text-align: center;"><a>退出</a></dd>
                     </dl>
                 </li>
-                <li class="layui-nav-item">
-                    <a href="javascript:;">解决方案</a>
-                    <dl class="layui-nav-child">
-                        <dd><a href="javascript:;">列表一</a></dd>
-                        <dd><a href="javascript:;">列表二</a></dd>
-                        <dd><a href="">超链接</a></dd>
-                    </dl>
+
+                <li class="layui-nav-item layui-hide-xs" lay-unselect="">
+                    <a href="javascript:;" layadmin-event="about"><i
+                            class="layui-icon layui-icon-more-vertical"></i></a>
                 </li>
-                <li class="layui-nav-item"><a href="">云市场</a></li>
-                <li class="layui-nav-item"><a href="">发布商品</a></li>
-            </ul>
+                <!--<li class="layui-nav-item layui-show-xs-inline-block layui-hide-sm" lay-unselect="">-->
+                    <!--<a href="javascript:;" layadmin-event="more"><i class="layui-icon layui-icon-more-vertical"></i></a>-->
+                <!--</li>-->
+                <span class="layui-nav-bar"></span></ul>
         </div>
-    </div>
 
-    <div class="layui-body">
-        <!-- 内容主体区域 -->
-        <div style="padding: 15px;">
-            <fieldset class="layui-elem-field layui-field-title" style="margin-top: 30px;">
-                <legend>大晚上的不睡觉</legend>
-            </fieldset>
-            <ul class="layui-timeline">
+        <div class="layui-side layui-bg-black">
 
-                <li class="layui-timeline-item">
-                    <i class="layui-icon layui-timeline-axis"></i>
-                    <div class="layui-timeline-content layui-text">
-                        <h3 class="layui-timeline-title">2018年08月01日</h3>
-                        <p>
-                            自娱自乐的无所事事
-                            <br>常常在想，尽管对这个国家有这样那样的抱怨，但我们的确生在了最好的时代
-                            <br>铭记、感恩
-                            <br>所有为中华民族浴血奋战的英雄将士
-                            <br>永垂不朽
-                        </p>
-                    </div>
-                </li>
-                <li class="layui-timeline-item">
-                    <i class="layui-icon layui-timeline-axis"></i>
-                    <div class="layui-timeline-content layui-text">
-                        <div class="layui-timeline-title">过去</div>
-                    </div>
-                </li>
-            </ul>
+            <div class="layui-side-scroll">
+                <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
+                <ul class="layui-nav layui-nav-tree" lay-filter="test">
+                    <li class="layui-nav-item layui-nav-itemed">
+                        <a class="" href="javascript:;">时间线</a>
+                        <dl class="layui-nav-child">
+                            <dd><a href="javascript:;">开发日记</a></dd>
+                        </dl>
+                    </li>
+                    <li class="layui-nav-item">
+                        <a href="javascript:;">解决方案</a>
+                        <dl class="layui-nav-child">
+                            <dd><a href="javascript:;">列表一</a></dd>
+                            <dd><a href="javascript:;">列表二</a></dd>
+                            <dd><a href="">超链接</a></dd>
+                        </dl>
+                    </li>
+                    <li class="layui-nav-item"><a href="">云市场</a></li>
+                    <li class="layui-nav-item"><a href="">发布商品</a></li>
+                </ul>
+            </div>
+        </div>
 
-            <!--<fieldset class="layui-elem-field layui-field-title" style="margin-top: 30px;">-->
+        <div class="layui-body">
+            <!-- 内容主体区域 -->
+            <div style="padding: 15px;">
+                <fieldset class="layui-elem-field layui-field-title" style="margin-top: 30px;">
+                    <legend>大晚上的不睡觉</legend>
+                </fieldset>
+                <ul class="layui-timeline">
+
+                    <li class="layui-timeline-item">
+                        <i class="layui-icon layui-timeline-axis"></i>
+                        <div class="layui-timeline-content layui-text">
+                            <h3 class="layui-timeline-title">2018年08月01日</h3>
+                            <p>
+                                自娱自乐的无所事事
+                                <br>常常在想，尽管对这个国家有这样那样的抱怨，但我们的确生在了最好的时代
+                                <br>铭记、感恩
+                                <br>所有为中华民族浴血奋战的英雄将士
+                                <br>永垂不朽
+                            </p>
+                        </div>
+                    </li>
+                    <li class="layui-timeline-item">
+                        <i class="layui-icon layui-timeline-axis"></i>
+                        <div class="layui-timeline-content layui-text">
+                            <div class="layui-timeline-title">过去</div>
+                        </div>
+                    </li>
+                </ul>
+
+                <!--<fieldset class="layui-elem-field layui-field-title" style="margin-top: 30px;">-->
                 <!--<legend>简约时间线：大事记</legend>-->
-            <!--</fieldset>-->
-            <!--<ul class="layui-timeline">-->
+                <!--</fieldset>-->
+                <!--<ul class="layui-timeline">-->
                 <!--<li class="layui-timeline-item">-->
-                    <!--<i class="layui-icon layui-timeline-axis"></i>-->
-                    <!--<div class="layui-timeline-content layui-text">-->
-                        <!--<div class="layui-timeline-title">2018年，layui 5.0 发布。并发展成为中国最受欢迎的前端UI框架（期望）</div>-->
-                    <!--</div>-->
+                <!--<i class="layui-icon layui-timeline-axis"></i>-->
+                <!--<div class="layui-timeline-content layui-text">-->
+                <!--<div class="layui-timeline-title">2018年，layui 5.0 发布。并发展成为中国最受欢迎的前端UI框架（期望）</div>-->
+                <!--</div>-->
                 <!--</li>-->
                 <!--<li class="layui-timeline-item">-->
-                    <!--<i class="layui-icon layui-timeline-axis"></i>-->
-                    <!--<div class="layui-timeline-content layui-text">-->
-                        <!--<div class="layui-timeline-title">2017年，layui 里程碑版本 2.0 发布</div>-->
-                    <!--</div>-->
+                <!--<i class="layui-icon layui-timeline-axis"></i>-->
+                <!--<div class="layui-timeline-content layui-text">-->
+                <!--<div class="layui-timeline-title">2017年，layui 里程碑版本 2.0 发布</div>-->
+                <!--</div>-->
                 <!--</li>-->
                 <!--<li class="layui-timeline-item">-->
-                    <!--<i class="layui-icon layui-timeline-axis"></i>-->
-                    <!--<div class="layui-timeline-content layui-text">-->
-                        <!--<div class="layui-timeline-title">2016年，layui 首个版本发布</div>-->
-                    <!--</div>-->
+                <!--<i class="layui-icon layui-timeline-axis"></i>-->
+                <!--<div class="layui-timeline-content layui-text">-->
+                <!--<div class="layui-timeline-title">2016年，layui 首个版本发布</div>-->
+                <!--</div>-->
                 <!--</li>-->
                 <!--<li class="layui-timeline-item">-->
-                    <!--<i class="layui-icon layui-timeline-axis"></i>-->
-                    <!--<div class="layui-timeline-content layui-text">-->
-                        <!--<div class="layui-timeline-title">2015年，layui 孵化</div>-->
-                    <!--</div>-->
+                <!--<i class="layui-icon layui-timeline-axis"></i>-->
+                <!--<div class="layui-timeline-content layui-text">-->
+                <!--<div class="layui-timeline-title">2015年，layui 孵化</div>-->
+                <!--</div>-->
                 <!--</li>-->
                 <!--<li class="layui-timeline-item">-->
-                    <!--<i class="layui-icon layui-anim layui-anim-rotate layui-anim-loop layui-timeline-axis"></i>-->
-                    <!--<div class="layui-timeline-content layui-text">-->
-                        <!--<div class="layui-timeline-title">更久前，轮子时代。维护几个独立组件：layer等</div>-->
-                    <!--</div>-->
+                <!--<i class="layui-icon layui-anim layui-anim-rotate layui-anim-loop layui-timeline-axis"></i>-->
+                <!--<div class="layui-timeline-content layui-text">-->
+                <!--<div class="layui-timeline-title">更久前，轮子时代。维护几个独立组件：layer等</div>-->
+                <!--</div>-->
                 <!--</li>-->
-            <!--</ul>-->
+                <!--</ul>-->
+            </div>
+        </div>
+
+        <div class="layui-footer">
+            <!-- 底部固定区域 -->
+            © autotnt.jd.com
         </div>
     </div>
+    <script src="/static/layui/layui.js"></script>
+    <script src="/static/js/admin.js"></script>
+    <script src="/static/js/view.js"></script>
+    <script src="/static/js/index.js"></script>
+    <script src="/static/js/config.js"></script>
+    <script>
+        //JavaScript代码区域
+        layui.use('element', function () {
+            var element = layui.element;
 
-    <div class="layui-footer">
-        <!-- 底部固定区域 -->
-        © autotnt.jd.com
-    </div>
+        });
+    </script>
 </div>
-<script src="/static/layui/layui.js"></script>
-<script>
-    //JavaScript代码区域
-    layui.use('element', function(){
-        var element = layui.element;
-
-    });
-</script>
 </body>
 </html>
